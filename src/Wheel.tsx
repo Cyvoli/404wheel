@@ -100,7 +100,7 @@ const WheelComponent = ({
 
   useEffect(() => {
     const handleFullscreenChange = () => {
-      const newSize = window.innerHeight / 2 - 40
+      const newSize = window.innerHeight / 2 - 40 //mettre -38
       setCanvasSize(newSize)
     }
 
