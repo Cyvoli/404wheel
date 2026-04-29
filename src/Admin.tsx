@@ -1,3 +1,7 @@
 export default function Admin() {
-    return <></>
+    return (
+        <>    
+            <h1>INTERFACE ADMIN</h1>
+        </>
+    );
 }

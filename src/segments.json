@@ -1,0 +1,32 @@
+{
+    "prizes": [
+        "LOW_DISCOUNT",
+        "GOODIE",
+        "HIGH_DISCOUNT",
+        "GOODIE",
+        "LOW_DISCOUNT",
+        "GOODIE",
+        "HIGH_DISCOUNT",
+        "GOODIE",
+        "LOW_DISCOUNT",
+        "JACKPOT"
+    ],
+    "colors": [
+        "#8041ba",
+        "#00c5be",
+        "#8041ba",
+        "#00c5be",
+        "#8041ba",
+        "#00c5be",
+        "#8041ba",
+        "#00c5be",
+        "#8041ba",
+        "#d3af37"
+    ],
+    "probabilities": [
+        {"LOW_DISCOUNT" : 0.2},
+        {"HIGH_DISCOUNT" : 0.1},
+        {"JACKPOT" : 0.01},
+        {"GOODIE" : 0.69}
+    ]
+}

@@ -8,6 +8,7 @@ import { LOW_DISCOUNT, HIGH_DISCOUNT, GOODIE, JACKPOT, Prize } from './constants
 export interface WheelComponentProps {
   segments: Prize[]
   segColors: string[]
+  prizeProba: []
   winningSegment: Prize
   onFinished: (segment: Prize) => void
   primaryColor?: string
@@ -30,6 +31,7 @@ const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3)
 const WheelComponent = ({
   segments,
   segColors,
+  prizeProba,
   onFinished,
   primaryColor = '#1C1C26',
   contrastColor = '#f3f5f8',
@@ -118,7 +120,9 @@ const WheelComponent = ({
     ctx.textBaseline = 'middle'
     ctx.textAlign = 'center'
     ctx.font = `bold ${fontSize} ${fontFamily}`
-
+    
+    //console.log(segments);
+    
     for (let i = 1; i <= segments.length; i++) {
       const segAngle = PI2 * (i / segments.length)
       drawSegment(ctx, i - 1, lastAngle, segAngle)
@@ -264,6 +268,7 @@ const WheelComponent = ({
   const value = segments[index]
   const shadowDepth = 100
   const segmentText = segments[index]
+  //console.log(segmentText);
   const textRadius = size - shadowDepth / 2
 
   // 1. Dessin et remplissage du segment de base.
