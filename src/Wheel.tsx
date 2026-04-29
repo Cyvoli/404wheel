@@ -8,7 +8,6 @@ import { LOW_DISCOUNT, HIGH_DISCOUNT, GOODIE, JACKPOT, Prize } from './constants
 export interface WheelComponentProps {
   segments: Prize[]
   segColors: string[]
-  prizeProba: []
   winningSegment: Prize
   onFinished: (segment: Prize) => void
   primaryColor?: string
@@ -31,7 +30,6 @@ const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3)
 const WheelComponent = ({
   segments,
   segColors,
-  prizeProba,
   onFinished,
   primaryColor = '#1C1C26',
   contrastColor = '#f3f5f8',
@@ -102,7 +100,7 @@ const WheelComponent = ({
 
   useEffect(() => {
     const handleFullscreenChange = () => {
-      const newSize = window.innerHeight / 2 - 40 //mettre -38
+      const newSize = window.innerHeight / 2 - 40
       setCanvasSize(newSize)
     }
 

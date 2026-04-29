@@ -15,7 +15,6 @@ import { LOW_DISCOUNT, HIGH_DISCOUNT, GOODIE, JACKPOT, Prize } from './constants
 import { copyData } from './utils';
 // import qr from './assets/qr.png'
 
-import segments from "./segments.json";
 
 type Participation = RegisterData & {
   result?: string,
@@ -57,15 +56,7 @@ const App = () => {
     JACKPOT,
   ]
 
-  console.log(segmentsPrizes);
-
-  const segmentsPrizes2: Prize[] = segments.prizes as Prize[];
-  const segColors = segments.colors;
-  const prizeProba = segments.probabilities as [];
-
-  console.log(segmentsPrizes2);
-
-  /*const segColors = [
+  const segColors = [
     '#8041ba',
     '#00c5be',
     '#8041ba',
@@ -76,7 +67,7 @@ const App = () => {
     '#00c5be',
     '#8041ba',
     '#d3af37',
-  ]*/
+  ]
 
   const onFinished = (winner: Prize) => {
     const form = { ...participation!, result: winner, date: new Date().toLocaleString() }
@@ -221,7 +212,6 @@ const App = () => {
         <WheelComponent
           status={status}
           segments={segmentsPrizes}
-          prizeProba={prizeProba}
           segColors={segColors}
           winningSegment={GOODIE}
           onFinished={(winner: Prize) => onFinished(winner)}
