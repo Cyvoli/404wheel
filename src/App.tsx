@@ -15,7 +15,7 @@ import { LOW_DISCOUNT, HIGH_DISCOUNT, GOODIE, JACKPOT, Prize } from './constants
 import { copyData } from './utils';
 // import qr from './assets/qr.png'
 
-import segments from "./segments.json";
+import {segmentsPrizes, segColors, prizeProba} from "./segments";
 
 type Participation = RegisterData & {
   result?: string,
@@ -43,40 +43,6 @@ const App = () => {
   function start() {
     setStatus('playing')
   }
-
-  const segmentsPrizes: Prize[] = [
-    LOW_DISCOUNT,
-    GOODIE,
-    HIGH_DISCOUNT,
-    GOODIE,
-    LOW_DISCOUNT,
-    GOODIE,
-    HIGH_DISCOUNT,
-    GOODIE,
-    LOW_DISCOUNT,
-    JACKPOT,
-  ]
-
-  console.log(segmentsPrizes);
-
-  const segmentsPrizes2: Prize[] = segments.prizes as Prize[];
-  const segColors = segments.colors;
-  const prizeProba = segments.probabilities as [];
-
-  console.log(segmentsPrizes2);
-
-  /*const segColors = [
-    '#8041ba',
-    '#00c5be',
-    '#8041ba',
-    '#00c5be',
-    '#8041ba',
-    '#00c5be',
-    '#8041ba',
-    '#00c5be',
-    '#8041ba',
-    '#d3af37',
-  ]*/
 
   const onFinished = (winner: Prize) => {
     const form = { ...participation!, result: winner, date: new Date().toLocaleString() }

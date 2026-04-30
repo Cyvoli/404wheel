@@ -8,7 +8,7 @@ import { LOW_DISCOUNT, HIGH_DISCOUNT, GOODIE, JACKPOT, Prize } from './constants
 export interface WheelComponentProps {
   segments: Prize[]
   segColors: string[]
-  prizeProba: []
+  prizeProba : {}
   winningSegment: Prize
   onFinished: (segment: Prize) => void
   primaryColor?: string
