@@ -26,9 +26,23 @@ export const segColors = [
     "#d3af37"
 ]
 
-export const prizeProba = {
-    JACKPOT: 0.01,
-    HIGH_DISCOUNT: 0.1,
-    LOW_DISCOUNT: 0.2,
-    GOODIE: 0.69
-}
+export const prizeProba = [
+    {
+        proba: 0.01,
+        prize: JACKPOT
+    },
+    {
+        proba: 0.1,
+        prize: HIGH_DISCOUNT
+    },
+    {
+        proba: 0.2,
+        prize: LOW_DISCOUNT
+    },
+    {
+        proba: 0.69,
+        prize: GOODIE
+    }
+]
+
+export type PrizeProba = {proba: number, prize: Prize}

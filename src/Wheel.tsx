@@ -3,12 +3,13 @@ import { useEffect, useState, useRef } from 'react'
 import { GameStatus } from './App'
 import { motion } from "motion/react"
 import { LOW_DISCOUNT, HIGH_DISCOUNT, GOODIE, JACKPOT, Prize } from './constants'
+import { PrizeProba, segmentsPrizes } from './segments'
 
 
 export interface WheelComponentProps {
   segments: Prize[]
   segColors: string[]
-  prizeProba : {}
+  prizeProba : PrizeProba[]
   winningSegment: Prize
   onFinished: (segment: Prize) => void
   primaryColor?: string
@@ -146,9 +147,35 @@ const WheelComponent = ({
 
     function getRandomDigit(): number {
       const rand = Math.random();
-      let segments: number[];
+      //let segments: number[];
+      let lot: Prize = GOODIE;
+      let segmentsLot: number[] = [];
 
-      if (rand < 0.01) return 9; // Jackpot (1%)
+      console.log(rand);
+      for (let i = 0; i<prizeProba.length; i++){
+        let threshold: number = 0;
+        
+        for (let j = 0; j<=i; j++){
+          threshold += prizeProba[j].proba;
+        }
+        
+        if(rand < threshold){
+          lot = prizeProba[i].prize;
+          break;
+        }
+        
+        console.log("threshold = " + threshold);
+      }
+      console.log("lot = " + lot);
+
+      for (let i=0; i<segmentsPrizes.length; i++){
+        if (segmentsPrizes[i] === lot){
+          segmentsLot.push(i);
+        }
+      }
+      console.log(segmentsLot);
+
+      /*if (rand < 0.01) return 9; // Jackpot (1%)
 
       if (rand < 0.11) { // High Discount (10%)
         segments = [2, 6];
@@ -156,9 +183,9 @@ const WheelComponent = ({
         segments = [0, 4, 8];
       } else { // Goodies (69%)
         segments = [1, 3, 5, 7];
-      }
+      }*/
 
-      return segments[Math.floor(Math.random() * segments.length)];
+      return segmentsLot[Math.floor(Math.random() * segmentsLot.length)];
     }
 
     const targetIndex = getRandomDigit()
